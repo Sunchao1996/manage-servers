@@ -1,7 +1,9 @@
 package com.sc.core.pub;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,23 +12,39 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @RefreshScope
-@ConfigurationProperties
 public class PubConfig {
 
     /**
      * 图片显示服务器地址
      */
+    @Value("${imageServer:''}")
     private String imageServer;
 
     /**
      * 图片路径
      */
+    @Value("${imageUploadPath:''}")
     private String imageUploadPath;
 
     /**
      * 网站title
      */
+    @Value("${webTitle:''}")
     private String webTitle;
+
+    /**
+     * 授权服务器地址
+     */
+    @Value("${authserverUrl:''}")
+    private String authserverUrl;
+
+    public String getAuthserverUrl() {
+        return authserverUrl;
+    }
+
+    public void setAuthserverUrl(String authserverUrl) {
+        this.authserverUrl = authserverUrl;
+    }
 
     public String getImageServer() {
         return imageServer;
@@ -61,6 +79,7 @@ public class PubConfig {
                 "imageServer='" + imageServer + '\'' +
                 ", imageUploadPath='" + imageUploadPath + '\'' +
                 ", webTitle='" + webTitle + '\'' +
+                ", authserverUrl='" + authserverUrl + '\'' +
                 '}';
     }
 }

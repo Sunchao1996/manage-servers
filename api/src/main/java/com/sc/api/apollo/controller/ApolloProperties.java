@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author 孙超 created on 2018/12/4
  */
-@EnableApolloConfig
+
 @RestController
 @RequestMapping("/apollo")
 public class ApolloProperties {

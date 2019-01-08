@@ -1,7 +1,9 @@
 package com.sc.api.site.controller;
 
+import com.netflix.discovery.converters.Auto;
 import com.sc.api.site.dto.UserInfoLoginDto;
 import com.sc.api.site.service.SiteLoginService;
+import com.sc.core.pub.PubConfig;
 import com.sc.sys.model.SysUser;
 import com.sc.sys.service.SysUserService;
 import com.sc.util.code.EnumReturnCode;
@@ -46,6 +48,8 @@ public class SiteLoginController {
     @Autowired
     private TokenStore tokenStore;
     private RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private PubConfig pubConfig;
 
     /**
      * 校验登录
@@ -76,7 +80,7 @@ public class SiteLoginController {
             HttpEntity httpEntity = new HttpEntity(map, null);
             //获取 Token
             try {
-                ResponseEntity<OAuth2AccessToken> body = restTemplate.exchange("http://localhost:8080/oauth/token", HttpMethod.POST, httpEntity, OAuth2AccessToken.class);
+                ResponseEntity<OAuth2AccessToken> body = restTemplate.exchange(pubConfig.getAuthserverUrl()+"/oauth/token", HttpMethod.POST, httpEntity, OAuth2AccessToken.class);
                 OAuth2AccessToken oAuth2AccessToken = body.getBody();
                 return new JsonResult(EnumReturnCode.SUCCESS_LOGIN, oAuth2AccessToken);
             } catch (Exception e) {

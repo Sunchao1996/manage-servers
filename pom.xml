@@ -12,6 +12,9 @@
         <module>core</module>
         <module>api</module>
         <module>authserver</module>
+		<module>eurekaserver</module>
+		<module>small-wx-api</module>
+		<module>small-wx-core</module>
     </modules>
 
     <name>ms</name>
@@ -86,6 +89,7 @@
                 <artifactId>apollo-client</artifactId>
                 <version>1.1.0</version>
             </dependency>
+
         </dependencies>
 
     </dependencyManagement>
