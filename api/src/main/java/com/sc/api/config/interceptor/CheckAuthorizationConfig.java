@@ -36,6 +36,7 @@ public class CheckAuthorizationConfig extends WebMvcConfigurerAdapter {
         // excludePathPatterns 用户排除拦截
         registry.addInterceptor(checkVersionInterceptor())
                 .excludePathPatterns("/login/login")
+                .excludePathPatterns("/swagger-resources/**")
                 .addPathPatterns("/*")
                 .addPathPatterns("/*/*")
                 .addPathPatterns("/*/*/*")
@@ -46,6 +47,7 @@ public class CheckAuthorizationConfig extends WebMvcConfigurerAdapter {
                 .addPathPatterns("/*/*")
                 .addPathPatterns("/*/*/*")
                 .excludePathPatterns("/login/login")
+                .excludePathPatterns("/swagger-resources/**")
         ;
 
         //记录日志

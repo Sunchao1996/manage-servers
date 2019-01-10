@@ -14,6 +14,8 @@ import com.sc.util.redis.RedisKey;
 import com.sc.util.redis.RedisUtil;
 import com.sc.util.session.WebSession;
 import com.sc.util.string.StringUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -41,6 +43,7 @@ import java.util.*;
 @RequestMapping("/login")
 @RestController
 @Validated
+@Api(value = "登录登出",tags = "登录登出")
 public class SiteLoginController {
     @Autowired
     private SysUserService sysUserService;
@@ -57,6 +60,7 @@ public class SiteLoginController {
      * @param userInfoLoginDto
      * @return
      */
+    @ApiOperation(value = "登录接口",notes = "登录提示")
     @PostMapping(value = "/login")
     public JsonResult checkLogin(HttpServletRequest request, @Valid @RequestBody UserInfoLoginDto userInfoLoginDto) {
         boolean flag = false;

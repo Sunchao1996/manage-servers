@@ -58,8 +58,12 @@ public class ApiOAuthConfig {
             http.authorizeRequests().antMatchers("/login/login").permitAll();
             http.authorizeRequests().antMatchers("/apollo/*").permitAll();
             http.authorizeRequests().antMatchers("/actuator/*").permitAll();
+            //swagger2配置
+            http.authorizeRequests().antMatchers("/swagger/**","/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-resources/configuration/**", "/swagge‌​r-ui.html").permitAll();
             http.authorizeRequests().antMatchers("/login/logout").authenticated();
-            http.authorizeRequests().anyRequest().authenticated() ;
+            http.authorizeRequests().anyRequest().authenticated();
+            // 所有用户均可访问的资源
+            http.cors().disable();
             http.csrf().disable();
         }
 
