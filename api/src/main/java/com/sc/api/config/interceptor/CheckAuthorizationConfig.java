@@ -4,15 +4,14 @@ import com.sc.sys.service.SysLogService;
 import com.sc.sys.service.SysUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * 校验登录拦截器配置
  * Created by 孔垂云 on 2017/8/19.
  */
 @Configuration
-public class CheckAuthorizationConfig extends WebMvcConfigurerAdapter {
+public class CheckAuthorizationConfig extends WebMvcConfigurationSupport {
 
     @Bean
     SysUserService sysUserService() {
@@ -36,7 +35,6 @@ public class CheckAuthorizationConfig extends WebMvcConfigurerAdapter {
         // excludePathPatterns 用户排除拦截
         registry.addInterceptor(checkVersionInterceptor())
                 .excludePathPatterns("/login/login")
-                .excludePathPatterns("/swagger-resources/**")
                 .addPathPatterns("/*")
                 .addPathPatterns("/*/*")
                 .addPathPatterns("/*/*/*")
@@ -47,14 +45,13 @@ public class CheckAuthorizationConfig extends WebMvcConfigurerAdapter {
                 .addPathPatterns("/*/*")
                 .addPathPatterns("/*/*/*")
                 .excludePathPatterns("/login/login")
-                .excludePathPatterns("/swagger-resources/**")
         ;
 
         //记录日志
         registry.addInterceptor(new LogRequestInterceptor())
                 .addPathPatterns("/*")
                 .addPathPatterns("/*/*")
-                .addPathPatterns("/*/*/*");
+                .addPathPatterns("/*/*/*") ;
         super.addInterceptors(registry);
     }
 }

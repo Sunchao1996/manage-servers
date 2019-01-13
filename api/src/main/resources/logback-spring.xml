@@ -140,41 +140,29 @@
 		</encoder>
 	</appender>
 	<!-- additivity为false不向root控制台输出 -->
-	<logger name="sysLog" additivity="false" level="info">
+	<logger name="sysLog" additivity="true" level="info">
 		<appender-ref ref="stdout"/>
 		<appender-ref ref="sysLogAppender"/>
 	</logger>
-	<logger name="daoLog" additivity="false" level="ERROR">
+	<logger name="daoLog" additivity="true" level="ERROR">
 		<appender-ref ref="stdout"/>
 		<appender-ref ref="daoLogAppender"/>
 	</logger>
-	<logger name="serviceLog" additivity="false" level="ERROR">
+	<logger name="serviceLog" additivity="true" level="ERROR">
 		<appender-ref ref="stdout"/>
 		<appender-ref ref="serviceLogAppender"/>
 	</logger>
-	<logger name="controllerLog" additivity="false" level="INFO">
+	<logger name="controllerLog" additivity="true" level="INFO">
 		<appender-ref ref="stdout"/>
 		<appender-ref ref="controllerLogAppender"/>
 	</logger>
-	<logger name="operationLog" additivity="false" level="INFO">
+	<logger name="operationLog" additivity="true" level="INFO">
 		<appender-ref ref="stdout"/>
 		<appender-ref ref="operationLogAppender"/>
 	</logger>
-	<logger name="performanceLog" additivity="false" level="INFO">
+	<logger name="performanceLog" additivity="true" level="INFO">
 		<appender-ref ref="stdout"/>
 		<appender-ref ref="performanceLogAppender"/>
-	</logger>
-	<logger name="jobLog" additivity="false" level="INFO">
-		<appender-ref ref="stdout"/>
-		<appender-ref ref="jobLogAppender"/>
-	</logger>
-	<logger name="httpLog" additivity="false" level="INFO">
-		<appender-ref ref="stdout"/>
-		<appender-ref ref="httpLogAppender"/>
-	</logger>
-	<logger name="smsLog" additivity="false" level="INFO">
-		<appender-ref ref="stdout"/>
-		<appender-ref ref="smsLogAppender"/>
 	</logger>
 
 	<!-- root 默认日志配置 -->

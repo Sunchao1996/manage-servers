@@ -4,5 +4,5 @@ import com.sc.wxfood.facade.FoodOrderFacade;
 import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient("small-wx-core")
-public interface FoodOrderService extends FoodOrderFacade {
+public interface FoodOrderServiceImp extends FoodOrderFacade {
 }

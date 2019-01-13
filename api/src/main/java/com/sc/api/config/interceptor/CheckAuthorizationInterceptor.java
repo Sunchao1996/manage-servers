@@ -1,23 +1,16 @@
 package com.sc.api.config.interceptor;
 
-import com.sc.api.config.filter.BodyReaderHttpServletRequestWrapper;
 import com.sc.api.security.utils.SecurityUtils;
-import com.sc.sys.model.SysUser;
 import com.sc.sys.service.SysLogService;
 import com.sc.sys.service.SysUserService;
 import com.sc.util.code.EnumReturnCode;
-import com.sc.util.code.GlobalCode;
 import com.sc.util.date.DateUtil;
 import com.sc.util.json.JsonResult;
 import com.sc.util.json.JsonUtil;
-import com.sc.util.session.SessionUtil;
-import com.sc.util.session.WebSession;
 import com.sc.util.string.StringUtil;
 import com.sc.util.web.WebUtil;
-import org.apache.catalina.security.SecurityUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -27,8 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * 校验权限

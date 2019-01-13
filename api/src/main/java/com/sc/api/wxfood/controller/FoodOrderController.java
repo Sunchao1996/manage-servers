@@ -1,7 +1,6 @@
 package com.sc.api.wxfood.controller;
 
-import com.netflix.discovery.converters.Auto;
-import com.sc.api.wxfood.service.FoodOrderService;
+import com.sc.api.wxfood.service.FoodOrderServiceImp;
 import com.sc.util.code.EnumReturnCode;
 import com.sc.util.json.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/foodorder")
 public class FoodOrderController {
     @Autowired
-    private FoodOrderService foodOrderService;
+    private FoodOrderServiceImp foodOrderServiceImp;
 
     @GetMapping("/list")
     public JsonResult list(){
-        return new JsonResult(EnumReturnCode.SUCCESS_INFO_GET,foodOrderService.list());
+        return new JsonResult(EnumReturnCode.SUCCESS_INFO_GET, foodOrderServiceImp.list());
     }
 }
