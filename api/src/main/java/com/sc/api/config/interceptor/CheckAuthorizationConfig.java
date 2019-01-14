@@ -12,7 +12,12 @@ import org.springframework.web.servlet.config.annotation.*;
  */
 @Configuration
 public class CheckAuthorizationConfig extends WebMvcConfigurationSupport {
-
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        String RESOURCE_LOCATION = "classpath:/META-INF/resources/";
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations(RESOURCE_LOCATION);
+        registry.addResourceHandler("/webjars/**").addResourceLocations(RESOURCE_LOCATION + "webjars/");// 1
+    }
     @Bean
     SysUserService sysUserService() {
         return new SysUserService();
@@ -38,6 +43,7 @@ public class CheckAuthorizationConfig extends WebMvcConfigurationSupport {
                 .addPathPatterns("/*")
                 .addPathPatterns("/*/*")
                 .addPathPatterns("/*/*/*")
+        .excludePathPatterns("/swagger/**","/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-resources/configuration/**", "/swagge‌​r-ui.html")
         ;
 
         registry.addInterceptor(new CheckAuthorizationInterceptor(sysUserService(), sysLogService()))
@@ -45,13 +51,15 @@ public class CheckAuthorizationConfig extends WebMvcConfigurationSupport {
                 .addPathPatterns("/*/*")
                 .addPathPatterns("/*/*/*")
                 .excludePathPatterns("/login/login")
+                .excludePathPatterns("/swagger/**","/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-resources/configuration/**", "/swagge‌​r-ui.html")
         ;
 
         //记录日志
         registry.addInterceptor(new LogRequestInterceptor())
                 .addPathPatterns("/*")
                 .addPathPatterns("/*/*")
-                .addPathPatterns("/*/*/*") ;
+                .addPathPatterns("/*/*/*")
+        .excludePathPatterns("/swagger/**","/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-resources/configuration/**", "/swagge‌​r-ui.html");
         super.addInterceptors(registry);
     }
 }
