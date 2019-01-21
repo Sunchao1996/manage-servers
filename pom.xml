@@ -12,9 +12,9 @@
         <module>core</module>
         <module>api</module>
         <module>authserver</module>
-		<module>eurekaserver</module>
-		<module>small-wx-api</module>
-		<module>small-wx-core</module>
+        <module>eurekaserver</module>
+        <module>small-wx-api</module>
+        <module>small-wx-core</module>
     </modules>
 
     <name>ms</name>
@@ -41,6 +41,20 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>
+                    org.springframework.cloud
+                </groupId>
+                <artifactId>
+                    spring-cloud-alibaba-dependencies
+                </artifactId>
+                <version>
+                    0.2.1.RELEASE
+                </version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

@@ -1,42 +1,34 @@
 package com.sc.api.site.controller;
 
-import com.netflix.discovery.converters.Auto;
 import com.sc.api.site.dto.UserInfoLoginDto;
-import com.sc.api.site.service.SiteLoginService;
 import com.sc.core.pub.PubConfig;
 import com.sc.sys.model.SysUser;
 import com.sc.sys.service.SysUserService;
 import com.sc.util.code.EnumReturnCode;
-import com.sc.util.code.GlobalCode;
-import com.sc.util.code.ReturnCodeUtil;
 import com.sc.util.json.JsonResult;
-import com.sc.util.redis.RedisKey;
-import com.sc.util.redis.RedisUtil;
-import com.sc.util.session.WebSession;
-import com.sc.util.string.StringUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.*;
+import java.util.Collections;
 
 /**
  */

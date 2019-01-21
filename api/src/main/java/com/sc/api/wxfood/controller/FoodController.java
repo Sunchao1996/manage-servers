@@ -61,11 +61,17 @@ public class FoodController {
             return new JsonResult(EnumReturnCode.FAIL_OPERA);
         }
     }
+
+
     /**
-     * 上传图片
+     * 同步到redis
+     *
+     * @return
      */
-    @PostMapping("/img")
-    public JsonResult img(@RequestBody String img){
-        return null;
+    @GetMapping("/sync")
+    public JsonResult sync() {
+        boolean flag = false;
+        flag = foodService.sync();
+        return new JsonResult(EnumReturnCode.SUCCESS_OPERA, flag);
     }
 }

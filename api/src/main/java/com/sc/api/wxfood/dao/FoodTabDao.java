@@ -45,7 +45,7 @@ public class FoodTabDao extends BaseDao<FoodTab, FoodTabSearchVO> {
         if (null != foodTabSearchVO.getTabStatus()) {
             search += " and tabStatus=:tabStatus ";
         }
-        search+=" order by tabOrder,tabName ";
+        search += " order by tabOrder,tabName ";
         return search;
     }
 
@@ -54,36 +54,48 @@ public class FoodTabDao extends BaseDao<FoodTab, FoodTabSearchVO> {
      */
     public int save(FoodTab foodTab) {
         String sql = "insert into wx_foodtab(" + INSERT_FIELED + ") values (" + VALUES_FIELED + ")";
-        return insert(sql,foodTab);
+        return insert(sql, foodTab);
     }
+
     /**
      * 根据id删除标签
      */
-    public int del(Integer id){
-        String sql ="delete from wx_foodtab where id=?";
-        return delete(sql,id);
+    public int del(Integer id) {
+        String sql = "delete from wx_foodtab where id=?";
+        return delete(sql, id);
     }
+
     /**
      * 修改标签
      */
-    public int updateById(FoodTab foodTab){
+    public int updateById(FoodTab foodTab) {
         String sql = "update wx_foodtab set tabName=:tabName,tabStatus=:tabStatus,tabOrder=:tabOrder where id=:id";
-        return update(sql,foodTab);
+        return update(sql, foodTab);
     }
+
     /**
      * 根据id获取标签信息
      */
-    public FoodTab getById(Integer id){
-        String sql ="select "+SELECT_FIELED+" from wx_foodtab where id=?";
-        return get(sql,id);
+    public FoodTab getById(Integer id) {
+        String sql = "select " + SELECT_FIELED + " from wx_foodtab where id=?";
+        return get(sql, id);
     }
 
     /**
      * 获取所有标签
+     *
      * @return
      */
     public List<FoodTab> listAll() {
-        String sql ="select "+SELECT_FIELED +" from wx_foodtab order by tabOrder,tabStatus desc,tabName";
+        String sql = "select " + SELECT_FIELED + " from wx_foodtab order by tabOrder,tabStatus desc,tabName";
+        return list(sql);
+    }
+
+    /**
+     * 获取所有有序的可用标签
+     */
+    public List<FoodTab> listAllTab() {
+        String sql = "select " + SELECT_FIELED + " from wx_foodtab where tabStatus=0 order by tabOrder,tabName";
         return list(sql);
     }
 }

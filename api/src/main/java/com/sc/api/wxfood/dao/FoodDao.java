@@ -83,4 +83,15 @@ public class FoodDao extends BaseDao<Food, FoodSearchVO> {
         String sql = "insert into wx_food (" + INSERT_FIELED + ") values (" + VALUES_FIELED + ")";
         return insert(sql, food);
     }
+
+    /**
+     * 根据标签id获取所有可用食物
+     *
+     * @param id
+     * @return
+     */
+    public List<Food> listByTab(Integer id) {
+        String sql = "select " + SELECT_FIELED + " from wx_food t where foodStatus=0 and foodTab=? order by foodOrder,foodName ";
+        return list(sql, id);
+    }
 }
